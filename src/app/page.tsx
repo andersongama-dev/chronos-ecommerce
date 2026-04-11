@@ -1,94 +1,139 @@
 "use client";
 
-//import Button from "@/components/button";
-//import CardCategoria from "@/components/cardCategoria";
-//import CardDestaque from "@/components/CardDestaque";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import Particles from "../components/Particles";
+import SplitText from "../components/SplitText";
+import { TextField } from "@mui/material";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+   const heroRef = useRef(null);
+   const promoRef = useRef(null);
+   const newsletterRef = useRef(null);
+
+   useEffect(() => {
+      gsap.from(heroRef.current, {
+         opacity: 0,
+         y: 80,
+         duration: 1.2,
+         ease: "power3.out",
+      });
+
+      gsap.from(promoRef.current, {
+         scrollTrigger: {
+            trigger: promoRef.current,
+            start: "top 80%",
+         },
+         scale: 1.2,
+         opacity: 0,
+         duration: 1.2,
+         ease: "power3.out",
+      });
+
+      gsap.from(newsletterRef.current, {
+         scrollTrigger: {
+            trigger: newsletterRef.current,
+            start: "top 85%",
+         },
+         y: 100,
+         opacity: 0,
+         duration: 1,
+         ease: "power3.out",
+      });
+
+      gsap.utils.toArray(".animate-on-scroll").forEach((el: any) => {
+         gsap.from(el, {
+            scrollTrigger: {
+               trigger: el,
+               start: "top 85%",
+            },
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+         });
+      });
+
+   }, []);
+
+   const handleAnimationComplete = () => {
+      console.log('All letters have animated!');
+   };
+
    return (
       <main>
-         {/* HERO */}
-         <section className="h-dvh flex items-center justify-center text-center">
-            <div className="flex flex-col gap-4">
-               <h1 className="text-7xl font-extrabold">
-                  Discover Watches That{" "}
+         <section className="h-dvh flex items-center justify-center text-center relative overflow-hidden">
+            <div className="absolute inset-0 -z-10">
+               <Particles
+                  particleColors={["#1f512b"]}
+                  particleCount={200}
+                  particleSpread={10}
+                  speed={0.1}
+                  particleBaseSize={100}
+                  moveParticlesOnHover={false}
+                  alphaParticles={false}
+                  disableRotation={false}
+                  pixelRatio={1}
+               />
+            </div>
+
+            <div ref={heroRef} className="flex flex-col gap-4">
+               <h1 className="text-7xl font-extrabold text-black tracking-[0.01em] leading-[1.3]">
+                  <SplitText
+                     text="Discover Watches That"
+                     className="text-center"
+                     delay={50}
+                     duration={1.25}
+                     ease="power3.out"
+                     splitType="chars"
+                     from={{ opacity: 0, y: 40 }}
+                     to={{ opacity: 1, y: 0 }}
+                     threshold={0.1}
+                     rootMargin="-100px"
+                     textAlign="center"
+                     onLetterAnimationComplete={handleAnimationComplete}
+                  />
+
                   <span className="block text-[#1F512B]">Define You</span>
                </h1>
-               <p className="text-xl text-[#898989]">
+               <p className="text-xl text-gray-600 tracking-[0.02em] leading-[1.5]">
                   Where luxury and modern design meet.
                </p>
-               {/* <Button text="Shop Now" url="/collection" /> */}
             </div>
          </section>
 
-         {/* CATEGORIAS */}
-         <section className="flex gap-8 justify-center mt-16">
-            {/* 
-               <CardCategoria
-               img="https://platinumjewelersms.com/wp-content/uploads/2024/06/mas318-ih9zzjrpjt.jpeg"
-               principal="Elite Collection"
-               text="Selected models from the most prestigious brands, celebrating design and heritage."
-               url="/collection"
-            />
-            <CardCategoria
-               img="https://http2.mlstatic.com/D_NQ_NP_613047-CBT76629791676_062024-O.webp"
-               principal="Sophistication"
-               text="Noble materials, impeccable finishing and attention to every detail."
-               url="/collection"
-            />
-            <CardCategoria
-               img="https://www.montredo.com/wp-content/uploads/2025/01/Linked-In-Post-Multi-Portrait-%E2%80%93-3.jpg"
-               principal="Exclusivity"
-               text="Limited pieces that elevate the status and style of the wearer."
-               url="/collection"
-            />
-            */}
-            
+         <section className="flex gap-8 justify-center mt-16 animate-on-scroll">
          </section>
 
-         {/* DESTAQUES */}
-         <section className="flex gap-8 justify-center mt-32">
-            {/* Cards estáticos (placeholder) */}
-            {/*  <CardDestaque
-               img="https://via.placeholder.com/300x300"
-               name="Watch Name"
-               watchId={1}
-            />
-            <CardDestaque
-               img="https://via.placeholder.com/300x300"
-               name="Watch Name"
-               watchId={2}
-            />
-            <CardDestaque
-               img="https://via.placeholder.com/300x300"
-               name="Watch Name"
-               watchId={3}
-            /> */}
-           
+         <section className="flex gap-8 justify-center mt-32 animate-on-scroll">
          </section>
 
-         {/* PROMOÇÃO */}
          <section className="px-16 mt-16">
             <img
+               ref={promoRef}
                src="https://www.marketing91.com/wp-content/uploads/2015/05/Rolex-Marketing-Strategy-1024x655.png"
                alt="Promotion img"
                className="w-dvw h-[600px] object-cover rounded-4xl"
             />
-            <div className="mt-8">
+            <div className="mt-8 animate-on-scroll">
                <h3 className="text-[#1F512B] text-xl font-semibold">
                   Exclusive Promotion
                </h3>
                <p className="text-[#898989] text-base w-1/4 mt-4">
                   Special highlight on selected models with promotional values
-                  for a limited time. Take the opportunity to invest in a
-                  classic of haute horlogerie, with unmissable discounts and
-                  conditions!
+                  for a limited time.
                </p>
             </div>
          </section>
 
-         {/* NEWSLETTER */}
-         <section className="text-center mt-16 border-y border-[#898989] mx-16 py-16 flex flex-col items-center">
+         <section
+            ref={newsletterRef}
+            className="text-center mt-16 border-t border-[#898989] mx-16 py-16 flex flex-col items-center"
+         >
             <div>
                <h2 className="text-[#1F512B] text-6xl font-extrabold">
                   Newsletter
@@ -97,15 +142,12 @@ export default function Home() {
                   Sign up and receive exclusive offers.
                </p>
             </div>
+
             <form className="mt-16 flex flex-col w-[405px]">
-               <input
-                  type="text"
-                  placeholder="nome@chronos.com"
-                  className="border-b border-gray-400 p-4 text-gray-400 placeholder-gray-400 focus:border-[#1F512B] focus:text-[#1F512B] focus:placeholder-[#1F512B] outline-none"
-               />
+               <TextField id="standard-basic" label="E-mail" variant="standard" type="email" />
                <button
                   type="submit"
-                  className="bg-[#1f512b] mt-8 text-white px-8 py-4 font-semibold rounded-full text-center transition-all duration-300 ease-in-out hover:bg-[#c6a664] cursor-pointer"
+                  className="bg-[#1f512b] mt-8 text-white px-8 py-4 font-semibold rounded-full transition-all duration-300 hover:bg-[#c6a664]"
                >
                   To send
                </button>

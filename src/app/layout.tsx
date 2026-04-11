@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import { usePathname } from "next/navigation";
+import Header from "../components/Header";
 
 export default function RootLayout({ children }) {
    const pathname = usePathname();
@@ -9,6 +10,7 @@ export default function RootLayout({ children }) {
    return (
       <html lang="en">
          <body>
+            <Header />
             {children}
          </body>
       </html>
