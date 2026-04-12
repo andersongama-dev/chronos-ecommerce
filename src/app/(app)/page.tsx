@@ -5,6 +5,7 @@ import SplitText from "@/components/SplitText";
 import CardCategoria from "@/components/CardCategoria";
 import CardDestaque from "@/components/CardDestaque";
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
 
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
          <section className="h-dvh flex items-center justify-center text-center relative overflow-hidden">
             <div className="absolute inset-0 -z-10">
                <Particles
-                  particleColors={["#1f512b"]}
+                  particleColors={["#4455de"]}
                   particleCount={200}
                   particleSpread={15}
                   speed={0.3}
@@ -44,21 +45,20 @@ export default function Home() {
                      to={{ opacity: 1, y: 0 }}
                      onLetterAnimationComplete={handleAnimationComplete}
                   />
-                  <span className="block text-[#1F512B]">Define You</span>
+                  <span className="block text-[#4455de]">Define You</span>
                </h1>
 
                <p className="hero-sub text-xl text-gray-600 tracking-[0.02em] leading-[1.5]">
                   Where luxury and modern design meet.
                </p>
 
-               <button
-                  className="hero-cta bg-[#1f512b] text-white px-8 py-4 rounded-full mt-6 w-64 mx-auto cursor-pointer tracking-[0.02em] leading-[1.5]">
+               <Button type="submit" className="mt-6 w-64 mx-auto bg-[#4455de] transition-all duration-200 rounded-full h-12 font-semibold cursor-pointer hover:bg-[#616ce6]">
                   Explore Collection
-               </button>
+               </Button>
             </div>
          </section>
 
-         <section className="flex gap-8 justify-center mt-12 animate-group">
+         <section className="grid grid-cols-3 mx-16 gap-8 justify-center mt-12 animate-group">
 
             <div className="animate-item">
                <CardCategoria
@@ -89,7 +89,7 @@ export default function Home() {
 
          </section>
 
-         <section className="flex gap-8 justify-center mt-12 animate-group">
+         <section className="flex gap-8 justify-center mt-32 animate-group">
 
             <div className="animate-item">
                <CardDestaque
@@ -115,9 +115,25 @@ export default function Home() {
                />
             </div>
 
+            <div className="animate-item">
+               <CardDestaque
+                  img="https://montecarlo.vtexassets.com/arquivos/ids/729948/NIM030784_1.jpg"
+                  name="Seiko Presage"
+                  watchId={1}
+               />
+            </div>
+
+            <div className="animate-item">
+               <CardDestaque
+                  img="https://montecarlo.vtexassets.com/arquivos/ids/729948/NIM030784_1.jpg"
+                  name="Seiko Presage"
+                  watchId={1}
+               />
+            </div>
+
          </section>
 
-         <section className="px-16 mt-12">
+         <section className="px-16 mt-32">
             <img
                src="https://www.marketing91.com/wp-content/uploads/2015/05/Rolex-Marketing-Strategy-1024x655.png"
                className="w-dvw h-[600px] object-cover rounded-4xl"
@@ -125,7 +141,7 @@ export default function Home() {
 
             <div className="mt-8 animate-group">
                <div className="animate-item">
-                  <h3 className="text-[#1F512B] text-2xl font-semibold tracking-[0.02em] leading-[1.5]">
+                  <h3 className="text-[#4455de] text-2xl font-semibold tracking-[0.02em] leading-[1.5]">
                      Exclusive Promotion
                   </h3>
                </div>
@@ -141,7 +157,7 @@ export default function Home() {
 
          <section
             className="text-center mt-12 border-t border-gray-300 mx-16 py-16 flex flex-col items-center">
-            <h2 className="text-[#1F512B] text-3xl font-semibold tracking-[0.01em] leading-[1.3]">
+            <h2 className="text-[#4455de] text-3xl font-semibold tracking-[0.01em] leading-[1.3]">
                Newsletter
             </h2>
 
@@ -151,10 +167,10 @@ export default function Home() {
 
             <form className="mt-8 flex flex-col w-[20dvw]">
                <Input placeholder="E-mail" type="email" />
-               <button
-                  className="hero-cta bg-[#1f512b] text-white px-8 py-4 rounded-full mt-6 mx-auto cursor-pointer w-full">
+
+               <Button type="submit" className="mt-6 bg-[#4455de] transition-all duration-200 rounded-full h-12 font-semibold cursor-pointer hover:bg-[#616ce6]">
                   To send
-               </button>
+               </Button>
             </form>
          </section>
 

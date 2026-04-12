@@ -74,7 +74,6 @@ export default function Header() {
                <li><a href="/" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Home</a></li>
                <li><a href="/collection" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Collection</a></li>
                <li><a href="/about" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">About</a></li>
-               <li><a href="/contact" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Contact</a></li>
             </ul>
          </nav>
 
