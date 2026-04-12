@@ -2,12 +2,12 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { useCart } from "@/contexts/CartContext";
+//import { useCart } from "@/contexts/CartContext";
 
 export default function WatchDetail() {
    const params = useParams();
    const router = useRouter();
-   const { addToCart } = useCart();
+   //const { addToCart } = useCart();
    const watchId = params.id;
 
    const [watchData, setWatchData] = useState(null);
@@ -15,7 +15,6 @@ export default function WatchDetail() {
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
 
-   // 🔹 Busca os dados do relógio pela rota backend (URL fixa)
    useEffect(() => {
       async function fetchWatch() {
          try {
@@ -40,16 +39,15 @@ export default function WatchDetail() {
       if (watchId) fetchWatch();
    }, [watchId]);
 
-   // 🔸 Adiciona ao carrinho
    const handleComprar = () => {
       if (!watchData) return;
-      addToCart({
+      /*addToCart({
          id: watchData.id,
          nomeProd: watchData.name,
          preco: watchData.price,
          img: watchData.images?.[0]?.image_url || "/images/placeholder.jpg",
          quantity: quantidade,
-      });
+      }); */
       alert(`Adicionado ao carrinho: ${watchData.name} x${quantidade}`);
    };
 
