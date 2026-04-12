@@ -23,7 +23,7 @@ export function Input({ error, className = "", placeholder, type, id: externalId
           placeholder=" "
           aria-invalid={error ? "true" : "false"}
           className={`peer w-full px-4 pt-[24px] pb-2 min-h-[54px] bg-[#E5E7EB] border-none rounded-lg text-gray-800 placeholder-transparent focus:outline-none focus:ring-2 transition-all duration-300 ${isPassword ? "pr-12" : ""} ${
-            error ? "focus:ring-red-500 ring-2 ring-red-500/50" : "focus:ring-[#1f512b]"
+            error ? "focus:ring-red-500 ring-2 ring-red-500/50" : "focus:ring-[#4455de]"
           } ${className}`}
         />
         {placeholder && (
