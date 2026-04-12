@@ -1,57 +1,26 @@
 "use client";
 
+import CardReloj from "@/components/CardReloj";
+import FiltersBar from "@/components/Filters";
 import { FC } from "react";
-import FilterGroup from "../../../components/filterGroup";
-//import CardRelogio from "@/components/cardRelogio";
-//import Paginacao from "@/components/paginacao";
 
-const Collection: FC = () => {
+export default function Collection() {
    return (
-      <>
-         <aside className="sticky top-[124px] self-start h-[calc(100vh-124px)] overflow-y-auto pt-8 pb-8 pr-4">
-            <div className="flex flex-col gap-4">
-               <FilterGroup
-                  title="Brand"
-                  items={[]}
-                  selectedFilters={[]}
-                  onFilterChange={() => {}}
-               />
-               <FilterGroup
-                  title="Gender"
-                  items={[]}
-                  selectedFilters={[]}
-                  onFilterChange={() => {}}
-               />
-            </div>
-         </aside>
+      <main className="pb-16">
 
-         <main className="min-h-screen pt-8">
-            <div className="mb-8 flex justify-between gap-2 pr-16">
-               <div className="text-sm text-gray-600">
-                  0 watch(es) found
-               </div>
+         <FiltersBar />
 
-               <div className="flex flex-wrap gap-2">
-                  <button className="text-xs text-gray-500 underline">
-                     Clear filters
-                  </button>
-               </div>
-            </div>
-
-            <div className="grid grid-cols-4 gap-16">
-               {/* Cards vão aqui */}
-            </div>
-         </main>
-
-         <div className="flex justify-center mt-16 col-span-2">
-            { /* <Paginacao
-               currentPage={1}
-               totalPages={1}
-               onPageChange={() => {}}
-            /> */}
+         <div className="grid grid-cols-3 mt-32 gap-12 ml-[22dvw] mr-16">
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/bdfb/1973/376e41dc8759/48ca952cc6da/T9598807308-p/T9598807308-p.jpg?ts=1775426959214&w=418"} nomeProd={"Reloj"} preco={20.00} />
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/5139/a8e8/95a341edb0a2/8f81239debe1/T9533749871-p/T9533749871-p.jpg?ts=1775426891821&w=418"} nomeProd={"Reloj"} preco={20.00} />
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/f1e4/ac11/a7874c5d96a0/c75cdd42ee2e/T9944633222-p/T9944633222-p.jpg?ts=1775426902148&w=418"} nomeProd={"Reloj"} preco={20.00} />
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/54e1/ee20/0b3340e7baae/fd99bc3ab743/08491405802-p/08491405802-p.jpg?ts=1759240364661&w=418"} nomeProd={"Reloj"} preco={20.00} />
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/eb5d/9309/b9754362a114/2eb2a9dbafe5/08491405800-p/08491405800-p.jpg?ts=1759240361441&w=418"} nomeProd={"Reloj"} preco={20.00} />
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/3e49/93ed/18fb4f90ae98/4d28fcdcdc3d/05951551707-p/05951551707-p.jpg?ts=1758115878010&w=418"} nomeProd={"Reloj"} preco={20.00} />
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/ebab/b10b/83c74a7d9ea3/8231f2a9961c/05862304020-p/05862304020-p.jpg?ts=1770914403766&w=418"} nomeProd={"Reloj"} preco={20.00} />
+            <CardReloj id={1} img={"https://static.zara.net/assets/public/7f4b/b4ff/052a47f98d06/0588b68660c6/08281760506-p/08281760506-p.jpg?ts=1756202745502&w=418"} nomeProd={"Reloj"} preco={20.00} />
          </div>
-      </>
+      </main>
    );
 };
 
-export default Collection;
