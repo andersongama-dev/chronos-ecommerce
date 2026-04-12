@@ -1,9 +1,9 @@
 "use client";
 
-import Particles from "../components/Particles";
-import SplitText from "../components/SplitText";
-import CardCategoria from "../components/CardCategoria";
-import CardDestaque from "../components/CardDestaque";
+import Particles from "@/components/Particles";
+import SplitText from "@/components/SplitText";
+import CardCategoria from "@/components/CardCategoria";
+import CardDestaque from "@/components/CardDestaque";
 import { Input } from "@/components/ui/input"
 
 
