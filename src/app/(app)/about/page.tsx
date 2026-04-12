@@ -1,6 +1,7 @@
 "use client";
 
 import Particles from "@/components/Particles";
+import { Button } from "@/components/ui/button";
 import { AudioLinesIcon } from "lucide-react";
 
 export default function About() {
@@ -9,7 +10,7 @@ export default function About() {
          <section className="h-dvh flex items-center justify-center text-center relative overflow-hidden">
             <div className="absolute inset-0 -z-10">
                <Particles
-                  particleColors={["#1f512b"]}
+                  particleColors={["#4455de"]}
                   particleCount={200}
                   particleSpread={15}
                   speed={0.3}
@@ -29,10 +30,9 @@ export default function About() {
                   Every watch tells a story. This is ours.
                </p>
 
-               <button
-                  className="hero-cta bg-[#1f512b] text-white px-8 py-4 rounded-full mt-6 w-64 mx-auto cursor-pointer tracking-[0.02em] leading-[1.5]">
+               <Button type="submit" className="mt-6 w-64 mx-auto bg-[#4455de] transition-all duration-200 rounded-full h-12 font-semibold cursor-pointer hover:bg-[#616ce6]">
                   Get to know the brand
-               </button>
+               </Button>
             </div>
          </section>
 
@@ -68,7 +68,7 @@ export default function About() {
 
             <div className="flex justify-between mx-16 gap-8 mt-8">
                <div className="border-gray-300 border flex gap-4 flex-col p-8 rounded-2xl">
-                  <AudioLinesIcon className="text-[#1f512b]" />
+                  <AudioLinesIcon className="text-[#4455de]" />
                   <h5 className="text-black text-2xl font-bold tracking-[0.01em] leading-[1.3]">
                      Quality
                   </h5>
@@ -78,7 +78,7 @@ export default function About() {
                </div>
 
                <div className="border-gray-300 border flex gap-4 flex-col p-8 rounded-2xl">
-                  <AudioLinesIcon className="text-[#1f512b]" />
+                  <AudioLinesIcon className="text-[#4455de]" />
                   <h5 className="text-black text-2xl font-bold tracking-[0.01em] leading-[1.3]">
                      Quality
                   </h5>
@@ -88,7 +88,7 @@ export default function About() {
                </div>
 
                <div className="border-gray-300 border flex gap-4 flex-col p-8 rounded-2xl">
-                  <AudioLinesIcon className="text-[#1f512b]" />
+                  <AudioLinesIcon className="text-[#4455de]" />
                   <h5 className="text-black text-2xl font-bold tracking-[0.01em] leading-[1.3]">
                      Quality
                   </h5>
@@ -135,10 +135,9 @@ export default function About() {
                   Every watch tells a story. This is ours.
                </p>
 
-               <button
-                  className="hero-cta bg-[#1f512b] text-white px-8 py-4 rounded-full mt-6 w-64 mx-auto cursor-pointer tracking-[0.02em] leading-[1.5]">
+               <Button type="submit" className="mt-6 w-64 mx-auto bg-[#4455de] transition-all duration-200 rounded-full h-12 font-semibold cursor-pointer hover:bg-[#616ce6]">
                   Get to know the brand
-               </button>
+               </Button>
             </div>
          </section>
 

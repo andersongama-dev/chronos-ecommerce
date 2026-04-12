@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import FilterGroup from "../../components/filterGroup";
+import FilterGroup from "../../../components/filterGroup";
 //import CardRelogio from "@/components/cardRelogio";
 //import Paginacao from "@/components/paginacao";
 
