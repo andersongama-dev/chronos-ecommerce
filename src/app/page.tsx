@@ -1,158 +1,163 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import Particles from "../components/Particles";
 import SplitText from "../components/SplitText";
-import { TextField } from "@mui/material";
+import CardCategoria from "../components/CardCategoria";
+import CardDestaque from "../components/CardDestaque";
+import { Input } from "@/components/ui/input"
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-   const heroRef = useRef(null);
-   const promoRef = useRef(null);
-   const newsletterRef = useRef(null);
 
-   useEffect(() => {
-      gsap.from(heroRef.current, {
-         opacity: 0,
-         y: 80,
-         duration: 1.2,
-         ease: "power3.out",
-      });
-
-      gsap.from(promoRef.current, {
-         scrollTrigger: {
-            trigger: promoRef.current,
-            start: "top 80%",
-         },
-         scale: 1.2,
-         opacity: 0,
-         duration: 1.2,
-         ease: "power3.out",
-      });
-
-      gsap.from(newsletterRef.current, {
-         scrollTrigger: {
-            trigger: newsletterRef.current,
-            start: "top 85%",
-         },
-         y: 100,
-         opacity: 0,
-         duration: 1,
-         ease: "power3.out",
-      });
-
-      gsap.utils.toArray(".animate-on-scroll").forEach((el: any) => {
-         gsap.from(el, {
-            scrollTrigger: {
-               trigger: el,
-               start: "top 85%",
-            },
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.out",
-         });
-      });
-
-   }, []);
 
    const handleAnimationComplete = () => {
-      console.log('All letters have animated!');
+      console.log("SplitText animation done");
    };
 
    return (
       <main>
+
          <section className="h-dvh flex items-center justify-center text-center relative overflow-hidden">
             <div className="absolute inset-0 -z-10">
                <Particles
                   particleColors={["#1f512b"]}
                   particleCount={200}
-                  particleSpread={10}
-                  speed={0.1}
+                  particleSpread={15}
+                  speed={0.3}
                   particleBaseSize={100}
-                  moveParticlesOnHover={false}
+                  moveParticlesOnHover={true}
                   alphaParticles={false}
                   disableRotation={false}
                   pixelRatio={1}
                />
             </div>
 
-            <div ref={heroRef} className="flex flex-col gap-4">
-               <h1 className="text-7xl font-extrabold text-black tracking-[0.01em] leading-[1.3]">
+            <div className="flex flex-col gap-4 justify-center">
+               <h1 className="hero-title text-7xl font-extrabold text-black tracking-[0.01em] leading-[1.3]">
                   <SplitText
                      text="Discover Watches That"
-                     className="text-center"
                      delay={50}
                      duration={1.25}
                      ease="power3.out"
                      splitType="chars"
                      from={{ opacity: 0, y: 40 }}
                      to={{ opacity: 1, y: 0 }}
-                     threshold={0.1}
-                     rootMargin="-100px"
-                     textAlign="center"
                      onLetterAnimationComplete={handleAnimationComplete}
                   />
-
                   <span className="block text-[#1F512B]">Define You</span>
                </h1>
-               <p className="text-xl text-gray-600 tracking-[0.02em] leading-[1.5]">
+
+               <p className="hero-sub text-xl text-gray-600 tracking-[0.02em] leading-[1.5]">
                   Where luxury and modern design meet.
                </p>
+
+               <button
+                  className="hero-cta bg-[#1f512b] text-white px-8 py-4 rounded-full mt-6 w-64 mx-auto cursor-pointer tracking-[0.02em] leading-[1.5]">
+                  Explore Collection
+               </button>
             </div>
          </section>
 
-         <section className="flex gap-8 justify-center mt-16 animate-on-scroll">
+         <section className="flex gap-8 justify-center mt-12 animate-group">
+
+            <div className="animate-item">
+               <CardCategoria
+                  img="https://http2.mlstatic.com/D_NQ_NP_918472-MLA89948232053_082025-O.webp"
+                  principal="Elite Collection"
+                  text="Selected models from the most prestigious brands."
+                  url=""
+               />
+            </div>
+
+            <div className="animate-item">
+               <CardCategoria
+                  img="https://http2.mlstatic.com/D_Q_NP_922448-CBT88208101500_072025-O.webp"
+                  principal="Sophistication"
+                  text="Timeless design with modern precision."
+                  url=""
+               />
+            </div>
+
+            <div className="animate-item">
+               <CardCategoria
+                  img="https://idealjoyeros.com/wp-content/uploads/mejores-relojes-titanio.jpeg"
+                  principal="Exclusivity"
+                  text="Rare and unique timepieces."
+                  url=""
+               />
+            </div>
+
          </section>
 
-         <section className="flex gap-8 justify-center mt-32 animate-on-scroll">
+         <section className="flex gap-8 justify-center mt-12 animate-group">
+
+            <div className="animate-item">
+               <CardDestaque
+                  img="https://dryzun.vteximg.com.br/arquivos/ids/173319/m126613lb-0002--1-.jpg"
+                  name="Rolex Submariner"
+                  watchId={3}
+               />
+            </div>
+
+            <div className="animate-item">
+               <CardDestaque
+                  img="https://cdn.awsli.com.br/568/568258/produto/212023029/1-uprplc.jpg"
+                  name="Orient Mako Solar"
+                  watchId={2}
+               />
+            </div>
+
+            <div className="animate-item">
+               <CardDestaque
+                  img="https://montecarlo.vtexassets.com/arquivos/ids/729948/NIM030784_1.jpg"
+                  name="Seiko Presage"
+                  watchId={1}
+               />
+            </div>
+
          </section>
 
-         <section className="px-16 mt-16">
+         <section className="px-16 mt-12">
             <img
-               ref={promoRef}
                src="https://www.marketing91.com/wp-content/uploads/2015/05/Rolex-Marketing-Strategy-1024x655.png"
-               alt="Promotion img"
                className="w-dvw h-[600px] object-cover rounded-4xl"
             />
-            <div className="mt-8 animate-on-scroll">
-               <h3 className="text-[#1F512B] text-xl font-semibold">
-                  Exclusive Promotion
-               </h3>
-               <p className="text-[#898989] text-base w-1/4 mt-4">
-                  Special highlight on selected models with promotional values
-                  for a limited time.
-               </p>
+
+            <div className="mt-8 animate-group">
+               <div className="animate-item">
+                  <h3 className="text-[#1F512B] text-2xl font-semibold tracking-[0.02em] leading-[1.5]">
+                     Exclusive Promotion
+                  </h3>
+               </div>
+
+               <div className="animate-item">
+                  <p className="text-gray-600 text-xl w-1/4 mt-4 tracking-[0.02em] leading-[1.5]">
+                     Special highlight on selected models with promotional values
+                     for a limited time.
+                  </p>
+               </div>
             </div>
          </section>
 
          <section
-            ref={newsletterRef}
-            className="text-center mt-16 border-t border-[#898989] mx-16 py-16 flex flex-col items-center"
-         >
-            <div>
-               <h2 className="text-[#1F512B] text-6xl font-extrabold">
-                  Newsletter
-               </h2>
-               <p className="text-xl text-[#898989] mt-8">
-                  Sign up and receive exclusive offers.
-               </p>
-            </div>
+            className="text-center mt-12 border-t border-gray-300 mx-16 py-16 flex flex-col items-center">
+            <h2 className="text-[#1F512B] text-3xl font-semibold tracking-[0.01em] leading-[1.3]">
+               Newsletter
+            </h2>
 
-            <form className="mt-16 flex flex-col w-[405px]">
-               <TextField id="standard-basic" label="E-mail" variant="standard" type="email" />
+            <p className="text-xl text-gray-600 mt-4 tracking-[0.02em] leading-[1.5]">
+               Sign up and receive exclusive offers.
+            </p>
+
+            <form className="mt-8 flex flex-col w-[20dvw]">
+               <Input placeholder="E-mail" type="email" />
                <button
-                  type="submit"
-                  className="bg-[#1f512b] mt-8 text-white px-8 py-4 font-semibold rounded-full transition-all duration-300 hover:bg-[#c6a664]"
-               >
+                  className="hero-cta bg-[#1f512b] text-white px-8 py-4 rounded-full mt-6 mx-auto cursor-pointer w-full">
                   To send
                </button>
             </form>
          </section>
+
       </main>
    );
 }
