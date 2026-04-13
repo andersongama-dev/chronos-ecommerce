@@ -3,41 +3,33 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export default function Login() {
+export default function Register() {
     return (
         <div className="min-h-screen flex items-center justify-center px-4">
             <div className="w-full max-w-md rounded-2xl p-8">
                 
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-900">
-                        Login to Chronos
+                        Create account
                     </h1>
                     <p className="text-gray-500 mt-3 text-sm tracking-wide">
-                        Sign in and receive exclusive offers
+                        Join Chronos and start your journey
                     </p>
                 </div>
 
                 <form className="mt-8">
                     <div className="flex flex-col gap-4">
+                        <Input placeholder="Full name" type="text" className="h-12 rounded-xl" />
                         <Input placeholder="E-mail" type="email" className="h-12 rounded-xl" />
-                        
-                        <div className="flex flex-col gap-2">
-                            <Input placeholder="Password" type="password" className="h-12 rounded-xl" />
-                            
-                            <a 
-                                href="/forgot-password"
-                                className="text-xs text-right text-gray-500 hover:text-[#4455de] transition"
-                            >
-                                Forgot password?
-                            </a>
-                        </div>
+                        <Input placeholder="Password" type="password" className="h-12 rounded-xl" />
+                        <Input placeholder="Confirm password" type="password" className="h-12 rounded-xl" />
                     </div>
 
                     <Button
                         type="submit"
                         className="w-full cursor-pointer h-12 mt-6 rounded-xl bg-[#4455de] hover:bg-[#5a63e6] transition-all duration-200 font-semibold"
                     >
-                        Log in
+                        Create account
                     </Button>
                 </form>
 
@@ -58,9 +50,9 @@ export default function Login() {
                 </div>
 
                 <p className="text-center text-sm text-gray-500 mt-8">
-                    Don’t have an account?{" "}
-                    <a href="/register" className="text-[#4455de] font-medium hover:underline">
-                        Sign up
+                    Already have an account?{" "}
+                    <a href="/login" className="text-[#4455de] font-medium hover:underline">
+                        Log in
                     </a>
                 </p>
             </div>
