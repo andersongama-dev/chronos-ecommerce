@@ -9,10 +9,10 @@ export default function Register() {
             <div className="w-full max-w-md rounded-2xl p-8">
                 
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900">
+                    <h1 className="text-3xl font-bold text-gray-900 tracking-[0.02em] leading-[1.5]">
                         Create account
                     </h1>
-                    <p className="text-gray-500 mt-3 text-sm tracking-wide">
+                    <p className="text-gray-500 mt-3 text-sm tracking-[0.02em] leading-[1.5]">
                         Join Chronos and start your journey
                     </p>
                 </div>
@@ -27,7 +27,7 @@ export default function Register() {
 
                     <Button
                         type="submit"
-                        className="w-full cursor-pointer h-12 mt-6 rounded-xl bg-[#4455de] hover:bg-[#5a63e6] transition-all duration-200 font-semibold"
+                        className="w-full cursor-pointer h-12 mt-6 tracking-[0.02em] leading-[1.5] rounded-xl bg-[#4455de] hover:bg-[#5a63e6] transition-all duration-200 font-semibold"
                     >
                         Create account
                     </Button>
@@ -41,17 +41,17 @@ export default function Register() {
 
                 <div className="flex gap-4">
                     <button className="w-full cursor-pointer h-12 flex items-center justify-center border border-gray-200 rounded-xl hover:bg-gray-50 transition">
-                        <span className="text-sm font-medium">Google</span>
+                        <span className="text-sm font-medium tracking-[0.02em] leading-[1.5]">Google</span>
                     </button>
 
                     <button className="w-full cursor-pointer h-12 flex items-center justify-center border border-gray-200 rounded-xl hover:bg-gray-50 transition">
-                        <span className="text-sm font-medium">Apple</span>
+                        <span className="text-sm font-medium tracking-[0.02em] leading-[1.5]">Apple</span>
                     </button>
                 </div>
 
-                <p className="text-center text-sm text-gray-500 mt-8">
+                <p className="text-center text-sm text-gray-500 mt-8 tracking-[0.02em] leading-[1.5]">
                     Already have an account?{" "}
-                    <a href="/login" className="text-[#4455de] font-medium hover:underline">
+                    <a href="/login" className="text-[#4455de] font-medium hover:underline tracking-[0.02em] leading-[1.5]">
                         Log in
                     </a>
                 </p>

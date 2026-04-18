@@ -9,10 +9,10 @@ export default function Login() {
             <div className="w-full max-w-md rounded-2xl p-8">
                 
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900">
+                    <h1 className="text-3xl font-bold text-gray-900 tracking-[0.02em] leading-[1.5]">
                         Login to Chronos
                     </h1>
-                    <p className="text-gray-500 mt-3 text-sm tracking-wide">
+                    <p className="text-gray-500 mt-3 text-sm tracking-[0.02em] leading-[1.5]">
                         Sign in and receive exclusive offers
                     </p>
                 </div>
@@ -26,7 +26,7 @@ export default function Login() {
                             
                             <a 
                                 href="/forgot-password"
-                                className="text-xs text-right text-gray-500 hover:text-[#4455de] transition"
+                                className="text-xs text-right text-gray-500 hover:text-[#4455de] transition tracking-[0.02em] leading-[1.5]"
                             >
                                 Forgot password?
                             </a>
@@ -35,7 +35,7 @@ export default function Login() {
 
                     <Button
                         type="submit"
-                        className="w-full cursor-pointer h-12 mt-6 rounded-xl bg-[#4455de] hover:bg-[#5a63e6] transition-all duration-200 font-semibold"
+                        className="w-full cursor-pointer h-12 mt-6 rounded-xl bg-[#4455de] hover:bg-[#5a63e6] transition-all duration-200 font-semibold tracking-[0.02em] leading-[1.5]"
                     >
                         Log in
                     </Button>
@@ -49,17 +49,17 @@ export default function Login() {
 
                 <div className="flex gap-4">
                     <button className="w-full cursor-pointer h-12 flex items-center justify-center border border-gray-200 rounded-xl hover:bg-gray-50 transition">
-                        <span className="text-sm font-medium">Google</span>
+                        <span className="text-sm font-medium tracking-[0.02em] leading-[1.5]">Google</span>
                     </button>
 
                     <button className="w-full cursor-pointer h-12 flex items-center justify-center border border-gray-200 rounded-xl hover:bg-gray-50 transition">
-                        <span className="text-sm font-medium">Apple</span>
+                        <span className="text-sm font-medium tracking-[0.02em] leading-[1.5]">Apple</span>
                     </button>
                 </div>
 
                 <p className="text-center text-sm text-gray-500 mt-8">
                     Don’t have an account?{" "}
-                    <a href="/register" className="text-[#4455de] font-medium hover:underline">
+                    <a href="/register" className="text-[#4455de] font-medium hover:underline tracking-[0.02em] leading-[1.5]">
                         Sign up
                     </a>
                 </p>
