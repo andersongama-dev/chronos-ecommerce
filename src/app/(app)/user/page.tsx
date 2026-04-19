@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useAuthRedirect } from "@/hooks/useAuthRedirect";
+import { useAuthRedirect } from "@/hooks/useAuth";
 
 export default function User() {
    const { user, logout, updateProfile } = useAuth();
