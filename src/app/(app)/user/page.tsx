@@ -1,3 +1,4 @@
+/*
 "use client";
 
 import { useState, useEffect } from "react";
@@ -55,7 +56,7 @@ export default function User() {
       <div className="pt-[124px] min-h-screen bg-gray-50">
          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-               {/* Header do perfil */}
+               {/* Header do perfil }
                <div className="bg-[#1f512b] px-6 py-8 text-white flex items-center justify-between">
                   <div>
                      <h1 className="text-3xl font-bold">My Profile</h1>
@@ -79,7 +80,7 @@ export default function User() {
                   </div>
                </div>
 
-               {/* Conteúdo do perfil */}
+               {/* Conteúdo do perfil }
                <div className="p-6">
                   {success && (
                      <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
@@ -170,3 +171,4 @@ export default function User() {
       </div>
    );
 }
+*/
