@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { Heart, Search, ShoppingBag, User } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,15 +66,15 @@ export default function Header() {
       >
          <div>
             <p className="text-3xl font-semibold text-black tracking-[0.01em] leading-[1.2]">
-               <a href="/">Chronos</a>
+               <Link href="/">Chronos</Link>
             </p>
          </div>
 
          <nav className="backdrop-blur-xl bg-[#1F512B]/10 border border-white/20 rounded-full px-8 py-3 shadow-sm">
             <ul className="flex gap-8 text-black">
-               <li><a href="/" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Home</a></li>
-               <li><a href="/collection" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Collection</a></li>
-               <li><a href="/about" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">About</a></li>
+               <li><Link href="/" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Home</Link></li>
+               <li><Link href="/collection" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Collection</Link></li>
+               <li><Link href="/about" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">About</Link></li>
             </ul>
          </nav>
 
@@ -82,23 +83,23 @@ export default function Header() {
                <Search />
             </button>
 
-            <a href="/favorites">
+            <Link href="/favorites">
                <button className="hover:opacity-70 transition cursor-pointer">
                   <Heart />
                </button>
-            </a>
+            </Link>
 
-            <a href="/bag">
+            <Link href="/bag">
                <button className="hover:opacity-70 transition cursor-pointer">
                   <ShoppingBag />
                </button>
-            </a>
+            </Link>
 
-            <a href="/login">
+            <Link href="/login">
                <button className="hover:opacity-70 transition cursor-pointer">
                   <User />
                </button>
-            </a>
+            </Link>
          </div>
       </header>
    );
