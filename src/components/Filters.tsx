@@ -1,14 +1,24 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 
-type FilterSectionProps = {
+type Filters = Record<string, string[]>;
+
+type Props = {
+  filters: Filters;
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+};
+
+function FilterSection({
+  title,
+  options,
+  selected,
+  onChange,
+}: {
   title: string;
   options: string[];
   selected: string[];
   onChange: (value: string) => void;
-};
-
-function FilterSection({ title, options, selected, onChange }: FilterSectionProps) {
+}) {
   return (
     <div className="mt-6">
       <h5 className="text-black text-xl font-semibold tracking-[0.02em] mb-3">
@@ -17,8 +27,10 @@ function FilterSection({ title, options, selected, onChange }: FilterSectionProp
 
       <div className="flex flex-col gap-2">
         {options.map((option) => (
-          <label key={option} className="flex items-center gap-3 cursor-pointer">
-            
+          <label
+            key={option}
+            className="flex items-center gap-3 cursor-pointer"
+          >
             <div className="relative flex items-center justify-center">
               <input
                 type="checkbox"
@@ -47,16 +59,7 @@ function FilterSection({ title, options, selected, onChange }: FilterSectionProp
   );
 }
 
-export default function FiltersBar() {
-  const [filters, setFilters] = useState<Record<string, string[]>>({
-    brand: [],
-    gender: [],
-    style: [],
-    caseMaterial: [],
-    strapMaterial: [],
-    strapColor: [],
-  });
-
+export default function FiltersBar({ filters, setFilters }: Props) {
   const toggleFilter = (category: string, value: string) => {
     setFilters((prev) => {
       const exists = prev[category].includes(value);
@@ -72,7 +75,6 @@ export default function FiltersBar() {
 
   return (
     <aside className="w-[20dvw] top-0 pt-32 pb-16 fixed px-10 h-dvh bg-white overflow-y-auto">
-      
       <FilterSection
         title="Brand"
         options={["Rolex", "Casio", "Seiko", "Omega", "Tag Heuer", "Tissot"]}
