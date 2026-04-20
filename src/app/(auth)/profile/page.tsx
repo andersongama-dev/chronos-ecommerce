@@ -9,6 +9,8 @@ import {
     Headphones,
     RefreshCcw,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useUserProfile } from "@/hooks/useProfile";
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -19,6 +21,8 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Sidebar from "@/components/Sidebar";
+import EditProfileModal from "@/components/EditProfileModal";
+import { useUpdateProfile } from "@/hooks/useUpdateProfile";
 
 export default function Profile() {
     const pathname = usePathname();
@@ -30,6 +34,25 @@ export default function Profile() {
         { href: "/favorites", label: "Favorites", icon: Heart },
     ];
 
+    const { fetchProfile, profile, loading } = useUserProfile();
+    const [openEdit, setOpenEdit] = useState(false);
+
+    const { updateProfile } = useUpdateProfile();
+
+    const handleUpdateProfile = async (name: string, email: string) => {
+        const updated = await updateProfile(name, email);
+
+        if (updated) {
+            await fetchProfile();
+        }
+    };
+
+    useEffect(() => {
+        fetchProfile();
+    }, []);
+
+    const userInitial = profile?.name?.charAt(0).toUpperCase() || "";
+
     return (
         <div className="min-h-screen bg-[#f8f9fb] flex">
 
@@ -40,25 +63,31 @@ export default function Profile() {
                 <Card className="border-gray-100 shadow-sm">
                     <CardContent className="flex items-center justify-between p-6">
                         <div className="flex items-center gap-4">
-                            <Avatar className="w-16 h-16">
-                                <AvatarImage src="https://via.placeholder.com/80" />
+                            <Avatar className="w-16 h-16 rounded-full">
+                                {profile?.name ? (
+                                    <div className="w-full h-full flex items-center justify-center bg-[#4455de] text-white font-semibold text-lg rounded-full">
+                                        {userInitial}
+                                    </div>
+                                ) : (
+                                    <AvatarImage src="https://via.placeholder.com/80" />
+                                )}
                             </Avatar>
 
                             <div>
                                 <h1 className="text-xl font-semibold text-gray-900 tracking-[0.02em] leading-[1.5]">
-                                    Your Name
+                                    {loading ? "Loading..." : profile?.name || "—"}
                                 </h1>
                                 <p className="text-sm text-gray-500 tracking-[0.02em] leading-[1.5]">
-                                    your@email.com
+                                    {profile?.email || "—"}
                                 </p>
                             </div>
                         </div>
 
-                        <Link href="/profile/edit">
-                            <Button className="h-11 rounded-xl bg-[#4455de] hover:opacity-90 cursor-pointer tracking-[0.02em] leading-[1.5]">
-                                Edit profile
-                            </Button>
-                        </Link>
+                        <Button
+                            onClick={() => setOpenEdit(true)}
+                            className="h-11 rounded-full px-4 bg-[#4455de] hover:opacity-90 cursor-pointer tracking-[0.02em] leading-[1.5]">
+                            Edit profile
+                        </Button>
                     </CardContent>
                 </Card>
 
@@ -200,6 +229,14 @@ export default function Profile() {
                     </Link>
                 </div>
             </main>
+
+            <EditProfileModal
+                open={openEdit}
+                onClose={() => setOpenEdit(false)}
+                initialName={profile?.name}
+                initialEmail={profile?.email}
+                onSave={handleUpdateProfile}
+            />
         </div>
     );
 }
