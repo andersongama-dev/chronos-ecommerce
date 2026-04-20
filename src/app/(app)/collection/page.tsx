@@ -17,6 +17,10 @@ export default function Collection() {
 
   const { data: watches, loading } = useWatches();
 
+  const handleRemove = (id) => {
+    console.log("remove favorite", id);
+  };
+
   return (
     <main className="pb-16">
 
@@ -38,6 +42,7 @@ export default function Collection() {
               img={watch.imageUrl}
               nomeProd={watch.name}
               preco={Number(watch.price)}
+              onRemoveFavorite={handleRemove}
             />
           ))}
       </div>
