@@ -8,7 +8,6 @@ import {
     MapPin,
     Headphones,
     RefreshCcw,
-    ArrowLeft,
 } from "lucide-react";
 
 import { usePathname } from "next/navigation";
