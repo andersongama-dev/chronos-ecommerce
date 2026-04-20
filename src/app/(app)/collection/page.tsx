@@ -15,7 +15,7 @@ export default function Collection() {
     strapColor: [],
   });
 
-  const { data: watches, loading } = useWatches(filters);
+  const { data: watches, loading } = useWatches();
 
   return (
     <main className="pb-16">

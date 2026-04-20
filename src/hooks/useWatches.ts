@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { getWatches } from "../services/watch";
 
-type Filters = Record<string, string[]>;
-
-export function useWatches(filters: Filters) {
+export function useWatches() {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,7 +10,7 @@ export function useWatches(filters: Filters) {
       setLoading(true);
 
       try {
-        const watches = await getWatches(filters);
+        const watches = await getWatches();
         setData(watches);
       } catch (err) {
         setData([]);
@@ -22,7 +20,7 @@ export function useWatches(filters: Filters) {
     }
 
     load();
-  }, [filters]);
+  }, []);
 
   return { data, loading };
 }
