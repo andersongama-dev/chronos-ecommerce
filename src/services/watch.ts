@@ -13,7 +13,7 @@ export async function getWatches(filters?: Filters) {
     });
   }
 
-  const res = await fetch(`${API_URL}/watches?${query.toString()}`);
+  const res = await fetch(`${API_URL}/watches`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch watches");
