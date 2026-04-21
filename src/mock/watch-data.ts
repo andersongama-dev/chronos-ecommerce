@@ -1,0 +1,58 @@
+import { Watch } from "@/types/watch-types";
+
+export const mockWatches: Watch[] = [
+    {
+        id: 1,
+        name: "Classic Silver",
+        brand: "Rolex",
+        price: 1200,
+        imageUrl: "https://static.zara.net/assets/public/97cd/4cdb/e5774099b721/d83c4cc3505e/00108404922-000-p/00108404922-000-p.jpg?ts=1775029555522&w=418",
+        gender: "Male",
+        style: "Classic",
+    },
+    {
+        id: 2,
+        name: "Modern Gold",
+        brand: "Omega",
+        price: 980,
+        imageUrl: "https://static.zara.net/assets/public/dd1f/feb7/294e4610adb7/a8b18081962d/00108404700-000-p/00108404700-000-p.jpg?ts=1775029552529&w=418",
+        gender: "Female",
+        style: "Modern",
+    },
+    {
+        id: 3,
+        name: "Classic Silver",
+        brand: "Rolex",
+        price: 1200,
+        imageUrl: "https://static.zara.net/assets/public/97cd/4cdb/e5774099b721/d83c4cc3505e/00108404922-000-p/00108404922-000-p.jpg?ts=1775029555522&w=418",
+        gender: "Male",
+        style: "Classic",
+    },
+    {
+        id: 4,
+        name: "Modern Gold",
+        brand: "Omega",
+        price: 980,
+        imageUrl: "https://static.zara.net/assets/public/dd1f/feb7/294e4610adb7/a8b18081962d/00108404700-000-p/00108404700-000-p.jpg?ts=1775029552529&w=418",
+        gender: "Female",
+        style: "Modern",
+    },
+    {
+        id: 5,
+        name: "Classic Silver",
+        brand: "Rolex",
+        price: 1200,
+        imageUrl: "https://static.zara.net/assets/public/97cd/4cdb/e5774099b721/d83c4cc3505e/00108404922-000-p/00108404922-000-p.jpg?ts=1775029555522&w=418",
+        gender: "Male",
+        style: "Classic",
+    },
+    {
+        id: 6,
+        name: "Modern Gold",
+        brand: "Omega",
+        price: 980,
+        imageUrl: "https://static.zara.net/assets/public/dd1f/feb7/294e4610adb7/a8b18081962d/00108404700-000-p/00108404700-000-p.jpg?ts=1775029552529&w=418",
+        gender: "Female",
+        style: "Modern",
+    },
+];
