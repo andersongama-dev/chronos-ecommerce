@@ -1,6 +1,5 @@
 "use client";
 
-import Sidebar from "@/components/Sidebar";
 import CardReloj from "@/components/CardReloj";
 import { useWatches } from "@/hooks/useWatches";
 
@@ -18,8 +17,6 @@ export default function Favorites() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f9fb] flex">
-      <Sidebar />
 
       <main className="flex-1 p-6 md:p-10 space-y-6">
         <h1 className="text-xl font-semibold tracking-[0.02em] leading-[1.5]">
@@ -53,6 +50,5 @@ export default function Favorites() {
           </div>
         )}
       </main>
-    </div>
   );
 }
