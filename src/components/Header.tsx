@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Heart, Search, ShoppingBag, User } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
    const headerRef = useRef(null);
+   const menuRef = useRef(null);
+   const [isOpen, setIsOpen] = useState(false);
 
    useEffect(() => {
       const header = headerRef.current;
@@ -42,20 +44,23 @@ export default function Header() {
             const current = self.scroll();
 
             if (current > lastScroll && current > 100) {
-               gsap.to(header, {
-                  y: -100,
-                  duration: 0.3,
-               });
+               gsap.to(header, { y: -100, duration: 0.3 });
             } else {
-               gsap.to(header, {
-                  y: 0,
-                  duration: 0.3,
-               });
+               gsap.to(header, { y: 0, duration: 0.3 });
             }
 
             lastScroll = current;
          },
       });
+
+      const handleClickOutside = (e: any) => {
+         if (menuRef.current && !menuRef.current.contains(e.target)) {
+            setIsOpen(false);
+         }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
 
    }, []);
 
@@ -72,13 +77,13 @@ export default function Header() {
 
          <nav className="backdrop-blur-xl bg-[#1F512B]/10 border border-white/20 rounded-full px-8 py-3 shadow-sm">
             <ul className="flex gap-8 text-black">
-               <li><Link href="/" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Home</Link></li>
-               <li><Link href="/collection" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">Collection</Link></li>
-               <li><Link href="/about" className="hover:opacity-70 transition tracking-[0.02em] leading-[1.5]">About</Link></li>
+               <li><Link href="/" className="hover:opacity-70 transition">Home</Link></li>
+               <li><Link href="/collection" className="hover:opacity-70 transition">Collection</Link></li>
+               <li><Link href="/about" className="hover:opacity-70 transition">About</Link></li>
             </ul>
          </nav>
 
-         <div className="flex gap-6 items-center text-black">
+         <div className="flex gap-6 items-center text-black relative" ref={menuRef}>
             <button className="hover:opacity-70 transition cursor-pointer">
                <Search />
             </button>
@@ -95,11 +100,40 @@ export default function Header() {
                </button>
             </Link>
 
-            <Link href="/login">
-               <button className="hover:opacity-70 transition cursor-pointer">
+            <div className="relative">
+               <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="hover:opacity-70 transition cursor-pointer"
+               >
                   <User />
                </button>
-            </Link>
+
+               {isOpen && (
+                  <div className="absolute right-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2">
+                     <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100">
+                        Perfil
+                     </Link>
+
+                     <Link href="/analytics" className="block px-4 py-2 hover:bg-gray-100">
+                        Analytics
+                     </Link>
+
+                     <Link href="/login" className="block px-4 py-2 hover:bg-gray-100">
+                        Login
+                     </Link>
+
+                     <button
+                        onClick={() => {
+                           localStorage.removeItem("token")
+                           console.log("logout");
+                        }}
+                        className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                     >
+                        Sair
+                     </button>
+                  </div>
+               )}
+            </div>
          </div>
       </header>
    );

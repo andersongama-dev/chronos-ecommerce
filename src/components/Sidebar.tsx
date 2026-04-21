@@ -6,6 +6,7 @@ import {
   Heart,
   MapPin,
   ArrowLeft,
+  ChartBar,
 } from "lucide-react";
 
 import { usePathname } from "next/navigation";
@@ -20,6 +21,7 @@ export default function Sidebar() {
     { href: "/orders", label: "Orders", icon: Truck },
     { href: "/addresses", label: "Addresses", icon: MapPin },
     { href: "/favorites", label: "Favorites", icon: Heart },
+    { href: "/analytics", label: "Analytics", icon: ChartBar },
   ];
 
   return (
