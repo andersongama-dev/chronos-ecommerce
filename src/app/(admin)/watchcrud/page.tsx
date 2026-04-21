@@ -30,10 +30,9 @@ export default function WatchTable() {
                         setSelectedWatch(null);
                         setOpenModal(true);
                     }}
-                    className="bg-[#4455de] hover:opacity-90"
+                    className="bg-[#4455de] hover:opacity-90 h-11 w-11 rounded-full font-medium cursor-pointer"
                 >
-                    <Plus size={16} />
-                    Add watch
+                    <Plus size={24} />
                 </Button>
             </div>
 
