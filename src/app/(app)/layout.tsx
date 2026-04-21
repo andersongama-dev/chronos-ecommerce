@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
 
-  const hideFooter = pathname === "/collection";
+  const hideFooter = pathname === "/collection" || pathname === "/bag";
 
   return (
     <>

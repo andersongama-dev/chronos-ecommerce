@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getWatchById } from "@/services/watch";
+import { useCart } from "@/hooks/useCart";
 
 type Watch = {
   id: number;
@@ -16,8 +17,11 @@ type Watch = {
 
 export default function WatchDetails() {
   const { id } = useParams();
+  const { addItem } = useCart();
+
   const [watch, setWatch] = useState<Watch | null>(null);
   const [loading, setLoading] = useState(true);
+  const [adding, setAdding] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -34,6 +38,19 @@ export default function WatchDetails() {
     if (id) load();
   }, [id]);
 
+  async function handleAddToCart() {
+    if (!watch) return;
+
+    try {
+      setAdding(true);
+      await addItem(watch.id, 1);
+    } catch (err) {
+      console.error("Error adding to cart", err);
+    } finally {
+      setAdding(false);
+    }
+  }
+
   if (loading) {
     return <main className="p-16">Loading...</main>;
   }
@@ -46,7 +63,6 @@ export default function WatchDetails() {
     <main className="px-16 pt-32 pb-16">
       <div className="grid grid-cols-2 gap-16">
 
-        {/* Imagem */}
         <div>
           <img
             src={watch.imageUrl}
@@ -79,8 +95,12 @@ export default function WatchDetails() {
           </div>
 
           <div className="flex gap-4 mt-6">
-            <button className="px-6 py-3 bg-black text-white rounded-lg">
-              Add to cart
+            <button
+              onClick={handleAddToCart}
+              disabled={adding}
+              className="px-6 py-3 bg-black text-white rounded-lg disabled:opacity-50"
+            >
+              {adding ? "Adding..." : "Add to cart"}
             </button>
 
             <button className="px-6 py-3 border border-black rounded-lg">
