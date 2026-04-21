@@ -1,26 +1,61 @@
 import { useEffect, useState } from "react";
-import { getWatches } from "../services/watch";
+import {
+  getWatches,
+  createWatch,
+  updateWatch,
+  deleteWatch,
+} from "@/services/watch";
 
 export function useWatches() {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function load() {
+  async function fetchWatches() {
+    try {
       setLoading(true);
-
-      try {
-        const watches = await getWatches();
-        setData(watches);
-      } catch (err) {
-        setData([]);
-      } finally {
-        setLoading(false);
-      }
+      const res = await getWatches();
+      setData(res);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
+  }
 
-    load();
+  async function addWatch(watch: any) {
+    const created = await createWatch(watch);
+    setData((prev) => [...prev, created]);
+  }
+
+  async function editWatch(id: number, watch: any) {
+    const updated = await updateWatch(id, watch);
+
+    setData((prev) =>
+      prev.map((w) =>
+        w.id === id
+          ? { ...w, ...watch }
+          : w
+      )
+    );
+
+    return updated;
+  }
+
+  async function removeWatch(id: number) {
+    await deleteWatch(id);
+    setData((prev) => prev.filter((w) => w.id !== id));
+  }
+
+  useEffect(() => {
+    fetchWatches();
   }, []);
 
-  return { data, loading };
+  return {
+    data,
+    loading,
+    addWatch,
+    editWatch,
+    removeWatch,
+    refetch: fetchWatches,
+  };
 }

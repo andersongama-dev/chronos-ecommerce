@@ -12,22 +12,24 @@ import {
     Megaphone,
     Settings,
     Headset,
+    ArrowLeft,
 } from "lucide-react";
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 export default function SidebarAdm() {
     const pathname = usePathname();
 
     const navItems = [
+        { href: "/analytics", label: "Analytics", icon: ChartBar },
         { href: "/watchcrud", label: "Watchs", icon: Watch },
         { href: "/stock", label: "Stock", icon: Warehouse },
         { href: "/orders", label: "Orders", icon: Receipt },
         { href: "/clients", label: "Clients", icon: User },
         { href: "/payment", label: "Payments", icon: CreditCard },
         { href: "/logistics", label: "Logistics", icon: Truck },
-        { href: "/analytics", label: "Analytics", icon: ChartBar },
         { href: "/promotions", label: "Promotions", icon: Tag },
         { href: "/marketing", label: "Marketing", icon: Megaphone },
         { href: "/settings", label: "Settings", icon: Settings },
@@ -43,22 +45,17 @@ export default function SidebarAdm() {
                 </h2>
             </div>
 
-            {
-                /*
-                 <div className="p-4">
-                    <Link href="/collection">
-                        <Button
-                            variant="outline"
-                            className="w-full justify-start gap-2 rounded-xl tracking-[0.02em] leading-[1.5] cursor-pointer"
-                        >
-                            <ArrowLeft size={16} />
-                            Back to collection
-                        </Button>
-                    </Link>
-                </div>
-    
-                */
-            }
+            <div className="p-4">
+                <Link href="/profile">
+                    <Button
+                        variant="outline"
+                        className="w-full justify-start gap-2 rounded-xl tracking-[0.02em] leading-[1.5] cursor-pointer"
+                    >
+                        <ArrowLeft size={16} />
+                        Back to profile
+                    </Button>
+                </Link>
+            </div>
 
             <nav className="flex-1 p-4 space-y-1 text-sm">
                 {navItems.map((item, i) => {
