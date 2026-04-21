@@ -19,7 +19,6 @@ export default function WatchTable() {
     removeWatch,
   } = useWatches();
 
-  
   const [openModal, setOpenModal] = useState(false);
   const [selectedWatch, setSelectedWatch] = useState<Watch | null>(null);
 

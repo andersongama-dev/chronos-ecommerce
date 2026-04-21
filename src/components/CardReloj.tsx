@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useCart } from "@/hooks/useCart";
 
 import {
    DropdownMenu,
@@ -17,11 +18,26 @@ import {
 
 import { Heart, ShoppingCart, Eye, MoreHorizontal } from "lucide-react";
 
-export default function CardReloj({ id, nomeProd, preco, img, onRemoveFavorite, }) {
+export default function CardReloj({
+   id,
+   nomeProd,
+   preco,
+   img,
+   onRemoveFavorite,
+}) {
    const router = useRouter();
+   const { addItem } = useCart();
 
    const handleClick = () => {
       router.push(`/watch/${id}`);
+   };
+
+   const handleAddToCart = async () => {
+      try {
+         await addItem(id, 1);
+      } catch (err) {
+         console.error("Error adding to cart", err);
+      }
    };
 
    return (
@@ -57,7 +73,10 @@ export default function CardReloj({ id, nomeProd, preco, img, onRemoveFavorite, 
 
                         <Tooltip>
                            <TooltipTrigger asChild>
-                              <button className="p-2 rounded-lg hover:bg-gray-100 cursor-pointer">
+                              <button
+                                 onClick={handleAddToCart}
+                                 className="p-2 rounded-lg hover:bg-gray-100 cursor-pointer"
+                              >
                                  <ShoppingCart size={18} />
                               </button>
                            </TooltipTrigger>
